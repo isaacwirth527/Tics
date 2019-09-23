@@ -10410,7 +10410,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649612813}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: e3795070bf6e5514b83b316c3544a6d4, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -18107,7 +18107,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 5b15f9b678dd08843b9dcfd95b9ef8b2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.426
+      value: 17.285
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 5b15f9b678dd08843b9dcfd95b9ef8b2,
         type: 3}
@@ -18172,8 +18172,38 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1221038661}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1221038663
-MeshCollider:
+--- !u!54 &1221038663
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221038662}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
+--- !u!114 &1221038664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221038662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d44c06be43ed374d8f73ff936639966, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  people: {fileID: 1221038662}
+  numOfPeople: 50
+--- !u!65 &1221038665
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -18182,10 +18212,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 3.0029335, y: 7.743786, z: 3.08801}
+  m_Center: {x: 0.07158697, y: 0.10879476, z: -0.5727068}
 --- !u!1 &1223371353 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 4d6442344a1c1b347b97598d9717190b,
@@ -26733,7 +26762,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654315293}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: e3795070bf6e5514b83b316c3544a6d4, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
