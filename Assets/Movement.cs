@@ -4,43 +4,37 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public Rigidbody rb;
-    public float speed;
-    public float rotationSpeed;
+    public float moveSpeed;
+    public Vector3 inputVector;
+    public Rigidbody thisRigidbody;
+
     void Start()
     {
-
+        thisRigidbody = GetComponent<Rigidbody>();
+        Cursor.visible = false;
     }
 
-    // Update is called once per frame
+    public float mouseX;
+    public float mouseY;
+
     void Update()
     {
+        mouseX = Input.GetAxis("Mouse X");
+        mouseY = Input.GetAxis("Mouse Y");
 
+        transform.Rotate(0, mouseX, 0);
+        Camera.main.transform.Rotate(-mouseY, 0, 0);
+
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        inputVector = transform.forward * vertical;
+        inputVector += transform.right * horizontal;
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        if (Input.GetAxis("Vertical") < 0)
-        {
-           rb.velocity = transform.forward * speed * Time.deltaTime;
-        }
-        if (Input.GetAxis("Vertical") > 0)
-        {
-            rb.velocity = -transform.forward * speed * Time.deltaTime;
-        }
-        if (Input.GetAxis("Horizontal") > 0)
-        {
-            transform.Rotate(0, rotationSpeed, 0);
-        }
-        if (Input.GetAxis("Horizontal") < 0)
-        {
-            transform.Rotate(0, -rotationSpeed, 0);
-        }
-        if(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
-        {
-            rb.velocity = Vector3.zero;
-        }
+        thisRigidbody.velocity = inputVector * moveSpeed + Physics.gravity * .69f;
     }
 }
 
