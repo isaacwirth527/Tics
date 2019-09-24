@@ -36,5 +36,13 @@ public class Movement : MonoBehaviour
     {
         thisRigidbody.velocity = inputVector * moveSpeed + Physics.gravity * .69f;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+            if (collision.gameObject.tag == "people")
+            {
+                anxiety.anxietyInt++;
+            }
+    }
 }
 
