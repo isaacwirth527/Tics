@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     {
         thisRigidbody = GetComponent<Rigidbody>();
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public float mouseX;
