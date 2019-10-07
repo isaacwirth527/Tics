@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class dialogueScript : MonoBehaviour
 {
-    public static string speech;
+    public string speech;
 
     // Start is called before the first frame update
     void Start()
@@ -17,5 +17,10 @@ public class dialogueScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public string getText()
+    {
+        return speech;
     }
 }
