@@ -6,6 +6,7 @@ TagManager:
   tags:
   - people
   - DialoguePeople
+  - barrier
   layers:
   - Default
   - TransparentFX
