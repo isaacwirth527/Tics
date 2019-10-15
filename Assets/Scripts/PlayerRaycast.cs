@@ -16,7 +16,7 @@ public class PlayerRaycast : MonoBehaviour
     void Update()
     {
         Ray playerRay = new Ray(transform.position, transform.forward);
-        float maxRayDistance = 1f; // just a bit in front
+        float maxRayDistance = 2f; // just a bit in front
         Debug.DrawRay(playerRay.origin, playerRay.direction * maxRayDistance, Color.red);
         RaycastHit raycastHit = new RaycastHit();
 
@@ -28,6 +28,7 @@ public class PlayerRaycast : MonoBehaviour
                      dialogueScript person = raycastHit.collider.gameObject.GetComponent<dialogueScript>();
                      string displayText = person.getText();
                      speechText.text = displayText;
+                     Debug.Log("Talking");
                  }
         }
         if (raycastHit.transform == null || raycastHit.transform.tag != "DialoguePeople" )

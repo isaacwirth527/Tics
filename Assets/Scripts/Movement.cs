@@ -44,6 +44,17 @@ public class Movement : MonoBehaviour
             {
                 anxiety.anxietyInt++;
             }
+
+         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "stopY")
+        {
+            Debug.Log("FrozeY");
+        }
     }
 }
+
 

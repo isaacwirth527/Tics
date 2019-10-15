@@ -9,26 +9,31 @@ public class anxiety : MonoBehaviour
     public int anxietyMax;
     public static int anxietyInt;
     public Slider slider;
+    public Slider embSlider;
     public GameObject player;
     public GameObject red;
     public int redTimer;
+    public static int embMeter;
     // Start is called before the first frame update
     void Start()
     {
         red.SetActive(false);
         anxietyInt = 0;
-        slider.value = anxietyInt;
         slider.maxValue = anxietyMax;
+        embMeter = 0;
+        embSlider.maxValue = 7;
     }
 
     // Update is called once per frame
     void Update()
     {
         slider.value = anxietyInt;
+        embSlider.value = embMeter;
+
         if (anxietyInt >= anxietyMax)
         {
             Tic();
-            StartCoroutine(endGame());
+            StartCoroutine(addEmb());
         }
         
 
@@ -38,13 +43,16 @@ public class anxiety : MonoBehaviour
     {
         red.SetActive(true);
         player.GetComponent<Animation>().Play();
-
+        embMeter++;
+        anxietyInt = 0;
 
     }
-    IEnumerator endGame()
+    IEnumerator addEmb()
     {
         yield return new WaitForSeconds(redTimer);
-        SceneManager.LoadScene("GameOver");
+       
+        player.GetComponent<Animation>().Stop();
+        
     }
 }
 

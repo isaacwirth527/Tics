@@ -18,7 +18,7 @@ public class PeopleSpawn : MonoBehaviour
         pplRb = new Rigidbody[numOfPeople];
         for (int i = 0; i < numOfPeople; i++)
         {
-            Vector3 randomPos = new Vector3(Random.Range(-2.5f, 2.5f), 0.99f, Random.Range(-70, 23));
+            Vector3 randomPos = new Vector3(Random.Range(-2.5f, 2.5f), 0.5f, Random.Range(-70, 23));
             Vector3 rotate = new Vector3(0, 180, 0);
             people[i] = Instantiate(person, randomPos, Quaternion.identity);
             people[i].transform.Rotate(rotate);
@@ -30,11 +30,6 @@ public class PeopleSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (people.Length < numOfPeople -1)
-        {
-            startPos = new Vector3(Random.Range(-2.5f, 2.5f), 0.99f, -70);
-            Instantiate(person, startPos, Quaternion.identity);
-        }
 
    
     }
@@ -47,14 +42,5 @@ public class PeopleSpawn : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        for (int i = 0; i < numOfPeople; i++)
-        {
-            if (other.gameObject.tag == "barrier")
-            {
-                Destroy(people[i]);
-            }
-        }
-    }
+
 }
