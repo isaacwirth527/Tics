@@ -8,6 +8,7 @@ TagManager:
   - DialoguePeople
   - barrier
   - stopY
+  - teacher
   layers:
   - Default
   - TransparentFX

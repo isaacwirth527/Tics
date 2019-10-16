@@ -28,8 +28,8 @@ public class Days : MonoBehaviour
     public void dayScreen()
     {
         Debug.Log("Day Screen method running");
-        splashScreen[days].SetActive(true);
         StartCoroutine(displayScreen());
+        splashScreen[days].SetActive(true);
     }
 
     IEnumerator displayScreen()
@@ -37,5 +37,6 @@ public class Days : MonoBehaviour
         yield return new WaitForSeconds(lengthOfScreen);
         splashScreen[days].SetActive(false);
         Debug.Log("Screen Coroutine running");
+        Movement.dayOfWeek++;
     }
 }

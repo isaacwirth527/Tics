@@ -65,7 +65,7 @@ public class Movement : MonoBehaviour
         if(other.gameObject.tag == "teacher")
         {
             StartCoroutine(waitAndMove());
-            dayManager.dayScreen();
+            
         }
     }
 
@@ -73,7 +73,7 @@ public class Movement : MonoBehaviour
     {
         thisRigidbody.isKinematic = true;
         yield return new WaitForSeconds(3f);
-        dayOfWeek++;
+        dayManager.dayScreen();
         transform.position = startPos;
         thisRigidbody.isKinematic = false;
     }
