@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class dialogueScript : MonoBehaviour
 {
-    public string speech;
+    public string basicSpeech;
+    public string mildlyEmbarassed;
+    public string veryEmbarassed;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,21 @@ public class dialogueScript : MonoBehaviour
 
     public string getText()
     {
-        return speech;
+        if (anxiety.embInt < 3)
+        {
+            return basicSpeech;
+        }
+        if (anxiety.embInt >= 3 && anxiety.embInt < 6)
+        {
+            return mildlyEmbarassed;
+        }
+        if (anxiety.embInt >= 6)
+        {
+            return veryEmbarassed;
+        }
+        else
+        {
+            return veryEmbarassed;
+        }
     }
 }
