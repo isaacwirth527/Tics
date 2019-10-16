@@ -30,8 +30,16 @@ public class PlayerRaycast : MonoBehaviour
                      speechText.text = displayText;
                      Debug.Log("Talking");
                  }
+
+                if(raycastHit.transform != null && raycastHit.transform.tag == "teacher")
+                {
+                     dialogueScript person = raycastHit.collider.gameObject.GetComponent<dialogueScript>();
+                     string displayText = person.getText();
+                     speechText.text = displayText;
+                     Debug.Log("Talking");
+                }
         }
-        if (raycastHit.transform == null || raycastHit.transform.tag != "DialoguePeople" )
+        if (raycastHit.transform == null || raycastHit.transform.tag != "DialoguePeople" || raycastHit.transform.tag != "teacher")
         {
             speechText.text = noText;
         }

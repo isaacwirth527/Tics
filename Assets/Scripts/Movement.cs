@@ -1,18 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
     public float moveSpeed;
     public Vector3 inputVector;
     public Rigidbody thisRigidbody;
+    public Vector3 startPos;
+    public static int dayOfWeek;
+    public Days dayManager;
 
     void Start()
     {
+        dayOfWeek = 0;
+        startPos = new Vector3(0, 0.15f, 54.96f);
         thisRigidbody = GetComponent<Rigidbody>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        dayManager.dayScreen();
     }
 
     public float mouseX;
@@ -54,7 +62,27 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("FrozeY");
         }
+        if(other.gameObject.tag == "teacher")
+        {
+            StartCoroutine(waitAndMove());
+            dayManager.dayScreen();
+        }
     }
+
+    IEnumerator waitAndMove()
+    {
+        thisRigidbody.isKinematic = true;
+        yield return new WaitForSeconds(3f);
+        dayOfWeek++;
+        transform.position = startPos;
+        thisRigidbody.isKinematic = false;
+    }
+
+   public int returnDayOfWeek()
+    {
+        return dayOfWeek;
+    }
+
 }
 
 
