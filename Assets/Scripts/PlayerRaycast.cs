@@ -21,15 +21,15 @@ public class PlayerRaycast : MonoBehaviour
         RaycastHit raycastHit = new RaycastHit();
 
         if (Physics.Raycast(playerRay, out raycastHit, maxRayDistance))
-   
+
         {
-                if (raycastHit.transform != null && raycastHit.transform.tag == "DialoguePeople")
-                 {
-                     dialogueScript person = raycastHit.collider.gameObject.GetComponent<dialogueScript>();
-                     string displayText = person.getText();
-                     speechText.text = displayText;
-                     Debug.Log("Talking");
-                 }
+            if (raycastHit.transform != null && raycastHit.transform.tag == "DialoguePeople")
+            {
+                dialogueScript person = raycastHit.collider.gameObject.GetComponent<dialogueScript>();
+                string displayText = person.getText();
+                speechText.text = displayText;
+                Debug.Log("Talking");
+            }
 
             if (raycastHit.transform != null && raycastHit.transform.tag == "teacher")
             {
@@ -37,6 +37,12 @@ public class PlayerRaycast : MonoBehaviour
                 string displayText = person.getText();
                 speechText.text = displayText;
                 Debug.Log("Talking");
+            }
+
+            if (raycastHit.transform != null && raycastHit.transform.tag != "teacher" && raycastHit.transform.tag != "DialoguePeople")
+            {
+                speechText.text = noText;
+                Debug.Log("Not talking");
             }
         }
   
