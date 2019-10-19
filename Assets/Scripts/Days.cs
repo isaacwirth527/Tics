@@ -9,24 +9,25 @@ public class Days : MonoBehaviour
     public GameObject[] splashScreen;
     public int lengthOfScreen;
     public Camera dayCamera;
+    public GameObject fadeScreen;
+    public FadeScript fade;
 
     Movement movementScript;
-    int days;// Start is called before the first frame update
+    int days;
     void Start()
     {
         for (int i = 1; i < 5; i++)
         {
             splashScreen[i].SetActive(false);
         }
-        //dayCamera.gameObject.SetActive(false);
         movementScript = player.GetComponent<Movement>();
+        fade = fadeScreen.GetComponent<FadeScript>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         days = movementScript.returnDayOfWeek();
-        if (days == 6)
+        if (days == 5)
         {
             if(anxiety.anxietyInt < 3)
             {
@@ -49,16 +50,21 @@ public class Days : MonoBehaviour
         StartCoroutine(displayScreen());
         splashScreen[days].SetActive(true);
         dayCamera.gameObject.SetActive(true);
+        fade.fadeInMethod();
         movementScript.gameObject.SetActive(false);
+        
     }
 
     IEnumerator displayScreen()
     {
+       
         yield return new WaitForSeconds(lengthOfScreen);
+        fade.fadeOutMethod();
         splashScreen[days].SetActive(false);
         dayCamera.gameObject.SetActive(false);
         movementScript.gameObject.SetActive(true);
         Debug.Log("Screen Coroutine running");
-        Movement.dayOfWeek++;
+
+
     }
 }

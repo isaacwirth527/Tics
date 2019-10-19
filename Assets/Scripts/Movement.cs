@@ -72,6 +72,7 @@ public class Movement : MonoBehaviour
     IEnumerator waitAndMove()
     {
         thisRigidbody.isKinematic = true;
+        dayOfWeek++;
         yield return new WaitForSeconds(3f);
         dayManager.dayScreen();
         transform.position = startPos;
