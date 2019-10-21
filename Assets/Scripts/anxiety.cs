@@ -42,8 +42,8 @@ public class anxiety : MonoBehaviour
 
     void Tic()
     {
-        red.SetActive(true);
         player.GetComponent<Animation>().Play();
+        player.GetComponent<AudioSource>().Play();
         anxietyInt = 0;
 
     }

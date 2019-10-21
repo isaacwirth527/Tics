@@ -12,6 +12,8 @@ public class Movement : MonoBehaviour
     public Vector3 startPos;
     public static int dayOfWeek;
     public Days dayManager;
+    public AudioSource audio;
+    public AudioSource bell;
 
     void Start()
     {
@@ -51,6 +53,8 @@ public class Movement : MonoBehaviour
             if (collision.gameObject.tag == "people")
             {
                 anxiety.anxietyInt++;
+               
+
             }
 
          
@@ -58,10 +62,6 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "stopY")
-        {
-            Debug.Log("FrozeY");
-        }
         if(other.gameObject.tag == "teacher")
         {
             StartCoroutine(waitAndMove());

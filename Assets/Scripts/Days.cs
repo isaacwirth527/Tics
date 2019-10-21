@@ -11,17 +11,17 @@ public class Days : MonoBehaviour
     public Camera dayCamera;
     public GameObject fadeScreen;
     public FadeScript fade;
-
     Movement movementScript;
     int days;
     void Start()
     {
+        fade = fadeScreen.GetComponent<FadeScript>();
         for (int i = 1; i < 5; i++)
         {
             splashScreen[i].SetActive(false);
         }
         movementScript = player.GetComponent<Movement>();
-        fade = fadeScreen.GetComponent<FadeScript>();
+       
     }
 
     void Update()
@@ -29,15 +29,15 @@ public class Days : MonoBehaviour
         days = movementScript.returnDayOfWeek();
         if (days == 5)
         {
-            if(anxiety.anxietyInt < 3)
+            if(anxiety.embInt < 3)
             {
                 SceneManager.LoadScene("GoodEnding");
             }
-            if(anxiety.anxietyInt >= 3 && anxiety.anxietyInt < 6)
+            if(anxiety.embInt >= 3 && anxiety.embInt < 6)
             {
                 SceneManager.LoadScene("MedEnding");
             }
-            if(anxiety.anxietyInt >= 6)
+            if(anxiety.embInt >= 6)
             {
                 SceneManager.LoadScene("BadEnding");
             }
@@ -52,6 +52,7 @@ public class Days : MonoBehaviour
         dayCamera.gameObject.SetActive(true);
         fade.fadeInMethod();
         movementScript.gameObject.SetActive(false);
+        
         
     }
 
